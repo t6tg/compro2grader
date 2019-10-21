@@ -1,0 +1,82 @@
+
+@font-face {
+    font-family: 'kanit-B';
+    src: url('../font/Kanit/Kanit-ExtraBold.ttf');
+}
+@font-face {
+    font-family: 'kanit-L';
+    src: url('../font/Kanit/Kanit-Light.ttf');
+}
+h1{
+    font-family: 'kanit-B';
+    letter-spacing: 2px ;
+}
+h5{
+    font-family: 'kanit-L';
+    letter-spacing: 1px ;
+    color: white;
+}
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .login{
+      padding: 15px;
+      background-color: #b9b7b788;
+      /* border-radius: 30px; */
+      /* border: solid 2px #777; */
+      border: none;
+      width: 400px;
+      font-size: 20px;
+      color: #777;
+      outline: none;
+  }
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+  }
+  .submit{
+    padding: 15px;
+    cursor: pointer;
+    background: linear-gradient(to top right, #ff6600 0%, #ff6699 100%);
+    border: none;
+    width: 400px;
+    font-size: 20px;
+    color: #fff;
+    outline: none;
+  }
+  .submit:hover{
+      background: linear-gradient(to top right, #ff6699 0%, #ff6600 100%);
+  }
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  .right {
+    right: 0;
+    background-color: #fff;
+  }
+  .left {
+    left: 0;
+    background: linear-gradient(to top right, #ff6600 0%, #ff6699 100%);
+
+  }
+  .circuit{
+        position: absolute;
+        min-height:100%;
+        background-image: url("../img/circuit.svg");
+        background-size:cover;
+  }
