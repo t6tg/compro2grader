@@ -157,7 +157,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     <!-- Sidebar Menu -->
                     <ul class="sidebar-menu" data-widget="tree">
-                        <li class="header">Quastion</li>
+                        <li class="header">Question</li>
                         <!-- Optionally, you can add icons to the links -->
                         <?php while ($row = mysqli_fetch_array($result)) {?>
                         <li class="active"><a><span><a class="menu-icon fa fa-book "
