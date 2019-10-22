@@ -64,7 +64,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <!-- Logo -->
                 <a href="#" class="logo" style="background-color : #ff6600">
-                    <span class="logo-lg" style="background-color : #ff6600"><b>Java</b>Grader</span>
+                    <span class="logo-lg" style="background-color : #ff6600"><b>C++</b>Grader</span>
                 </a>
 
                 <!-- Header Navbar -->

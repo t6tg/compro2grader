@@ -4,10 +4,10 @@ if (!$_POST['submit'] || $_POST['sid'] == "" || $_POST['pass'] == "") {
     header("Refresh:0; url=index.php");
 } else {
     session_start();
-    require_once("./Database/Database.php");
+    require_once "./Database/Database.php";
     $username = mysqli_real_escape_string($conn, $_POST['sid']);
     $password = mysqli_real_escape_string($conn, md5($_POST['pass']));
-    $sql = "select * from admin where username='" . $username . "' and password='" . $password . "'";
+    $sql = "select * from administrator where username='" . $username . "' and password='" . $password . "'";
     $query = mysqli_query($conn, $sql);
     $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
     if (!$result) {
