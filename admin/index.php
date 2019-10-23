@@ -40,6 +40,7 @@ $query_work = mysqli_query($conn, $sql_work);
             <li><a href="main/quiz.php">QUIZ</a></li>
             <li><a href="main/score.php">Score</a></li>
             <li><a href="main/special.php">S.Score</a></li>
+            <li><a href="main/user.php">USER</a></li>
             <li style="float:right"><a href="../logout.php">Logout</a></li>
         </ul>
     </body>
@@ -57,7 +58,7 @@ $query_work = mysqli_query($conn, $sql_work);
                         <th>Type</th>
                         <th>Error</th>
                     </tr>
-                    <?php while ($row_work = mysqli_fetch_array($query_work)) {?>
+                    <?php while ($row_work = mysqli_fetch_assoc($query_work)) {?>
                     <tr>
                         <td><?php echo '<a href="main/read.php?read=' . $row_work['week'] . '" style="color:black">' . $row_work['week'] . '</a>'; ?>
                         </td>

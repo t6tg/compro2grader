@@ -57,7 +57,7 @@ if ($row_server['server_st'] == 1) {
                         $search = 'package';
                         $check = false;
                         $score_user = 0;
-                        $CC = "g++ -Wall -std=c++11";
+                        $CC = "g++ -w -std=c++2a";
                         $out = "./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/ g++ ./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/main";
                         // $out="CLASSPATH=91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id g++ Main.cpp";
                         $filename_code = "./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/Main.cpp -o ./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/main";
@@ -89,7 +89,7 @@ if ($row_server['server_st'] == 1) {
                                 } else {
                                     shell_exec($runtime_error_command);
                                     $runtime_error = file_get_contents($runtime_file);
-                                    $out = "./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/main < " . $filename_in . " > ./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/$i.sol";
+                                    $out = "timeout 1 ./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/main < " . $filename_in . " > ./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/$i.sol";
                                     $output = shell_exec($out);
                                     // $output = file_get_contents("output.txt");
                                 }
@@ -98,7 +98,7 @@ if ($row_server['server_st'] == 1) {
                             $seconds = $executionEndTime - $executionStartTime;
                             $seconds = sprintf('%0.2f', $seconds);
                             $arr_time[$i - 1] = $seconds;
-                            if ($seconds > 5) {
+                            if ($seconds > 3) {
                                 $arr_P[$i - 1] = "T";
                                 $arr_Score[$i - 1] = 0;
                             } else {
