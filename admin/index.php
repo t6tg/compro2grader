@@ -41,66 +41,85 @@ $query_work = mysqli_query($conn, $sql_work);
             <li><a href="main/score.php">Score</a></li>
             <li><a href="main/special.php">S.Score</a></li>
             <li><a href="main/user.php">USER</a></li>
+            <li><a href="main/create.php">Create Problem</a></li>
             <li style="float:right"><a href="../logout.php">Logout</a></li>
         </ul>
+        <div class="container">
+            <br>
+            <h1>Welcome To Admin Page</h1>
+            <center>
+                <div class="container">
+                    <br>
+                    <h2>Work</h2>
+                    <table width="25%">
+                        <tr>
+                            <th>File Name</th>
+                            <th>Status</th>
+                            <th>Type</th>
+                            <th>Error</th>
+                            <th>DELETE</th>
+                        </tr>
+                        <?php while ($row_work = mysqli_fetch_assoc($query_work)) {?>
+                        <tr>
+                            <td><?php echo '<a href="main/read.php?read=' . $row_work['week'] . '" style="color:black">' . $row_work['week'] . '</a>'; ?>
+                            </td>
+                            <td>
+                                <?php if ($row_work['status'] == 1) {?>
+
+                                <a href="index.php?week=<?php echo $row_work['week']; ?>&status=0"><span
+                                        style="color:green">on</span></a>
+                                <?php }?>
+                                <?php if ($row_work['status'] == 0) {?>
+                                <a href="index.php?week=<?php echo $row_work['week']; ?>&status=1"><span
+                                        style="color:red">off</span></a>
+                                <?php }?>
+                            </td>
+                            <td>
+                                <?php if ($row_work['type'] == 1) {?>
+                                <a href="index.php?weektype=<?php echo $row_work['week']; ?>&type=0">Auto</a>
+                                <?php }?>
+                                <?php if ($row_work['type'] == 0) {?>
+                                <a href="index.php?weektype=<?php echo $row_work['week']; ?>&type=1">Manual</a>
+                                <?php }?>
+                                <?php if ($row_work['type'] == 2) {?>
+                                -
+                                <?php }?>
+                            </td>
+                            <td>
+                                <?php if ($row_work['type'] == 2) {?>
+                                <a style="color:red"
+                                    href="index.php?weekerror=<?php echo $row_work['week']; ?>&type=0">UnError</a>
+                                <?php }?>
+                                <?php if ($row_work['type'] != 2) {?>
+                                <a style="color:red"
+                                    href="index.php?weekerror=<?php echo $row_work['week']; ?>&type=2">Error</a>
+                                <?php }?>
+                            </td>
+                            <td>
+                            <form action="./update.php" id="signup-form" method="post">
+                                    <input type="hidden" name="id" value="<?php echo $row_work['week']; ?>">
+                                    <button type="button" name="sub" 
+                                    onclick="delete_pro('<?php echo $row_work['week']; ?>')"
+                                    class="btn btn-danger"  >DELETE</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <?php }?>
+                    </table><br><br>
+                </div>
+            </center>
+        </div>
+        <script>
+        function delete_pro(value) {
+            if (confirm("You want to delete " + value + ".... ??")) {
+                document.getElementById("signup-form").submit();
+                return true;
+            } else {
+                return false;
+            }
+        }
+        </script>
     </body>
-    <div class="container">
-        <br>
-        <h1>Welcome To Admin Page</h1>
-        <center>
-            <div class="container">
-                <br>
-                <h2>Work</h2>
-                <table width="25%">
-                    <tr>
-                        <th>File Name</th>
-                        <th>Status</th>
-                        <th>Type</th>
-                        <th>Error</th>
-                    </tr>
-                    <?php while ($row_work = mysqli_fetch_assoc($query_work)) {?>
-                    <tr>
-                        <td><?php echo '<a href="main/read.php?read=' . $row_work['week'] . '" style="color:black">' . $row_work['week'] . '</a>'; ?>
-                        </td>
-                        <td>
-                            <?php if ($row_work['status'] == 1) {?>
-
-                            <a href="index.php?week=<?php echo $row_work['week']; ?>&status=0"><span
-                                    style="color:green">on</span></a>
-                            <?php }?>
-                            <?php if ($row_work['status'] == 0) {?>
-                            <a href="index.php?week=<?php echo $row_work['week']; ?>&status=1"><span
-                                    style="color:red">off</span></a>
-                            <?php }?>
-                        </td>
-                        <td>
-                            <?php if ($row_work['type'] == 1) {?>
-                            <a href="index.php?weektype=<?php echo $row_work['week']; ?>&type=0">Auto</a>
-                            <?php }?>
-                            <?php if ($row_work['type'] == 0) {?>
-                            <a href="index.php?weektype=<?php echo $row_work['week']; ?>&type=1">Manual</a>
-                            <?php }?>
-                            <?php if ($row_work['type'] == 2) {?>
-                            -
-                            <?php }?>
-                        </td>
-                        <td>
-                            <?php if ($row_work['type'] == 2) {?>
-                            <a style="color:red"
-                                href="index.php?weekerror=<?php echo $row_work['week']; ?>&type=0">UnError</a>
-                            <?php }?>
-                            <?php if ($row_work['type'] != 2) {?>
-                            <a style="color:red"
-                                href="index.php?weekerror=<?php echo $row_work['week']; ?>&type=2">Error</a>
-                            <?php }?>
-                        </td>
-                    </tr>
-                    <?php }?>
-                </table>
-            </div>
-        </center>
-    </div>
-
     <?php
 if ($_GET['week']) {
     $sql_update = "update problem set status='" . $_GET['status'] . "' where week='" . $_GET['week'] . "'";

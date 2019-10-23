@@ -50,6 +50,7 @@ if ($result_server['ban'] == 0) {
             <li><a href="score.php">Score</a></li>
             <li><a href="special.php">S.Score</a></li>
             <li><a href="user.php">USER</a></li>
+            <li><a href="create.php">Create Problem</a></li>
             <li style="float:right"><a href="../../logout.php">Logout</a></li>
         </ul>
     </body>

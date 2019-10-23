@@ -44,6 +44,7 @@ if ($_GET['read']) {
             <li><a href="score.php">Score</a></li>
             <li><a href="special.php">S.Score</a></li>
             <li><a href="user.php">USER</a></li>
+            <li><a  href="create.php">Create Problem</a></li>
             <li style="float:right"><a href="../../logout.php">Logout</a></li>
         </ul>
     </body>
@@ -55,12 +56,12 @@ if ($_GET['read']) {
                     <th>Input</th>
                     <th>Output</th>
                 </tr>
-                <?php $config = file_get_contents("../../main/process/91d9a2124569c9135979c12e3ec464f5/input/$read/config.txt");?>
+                <?php $config = file_get_contents("../../main/process/91d9a2124569c9135979c12e3ec464f5/input/$read/config.txt") or die("File not found");?>
                 <?php for ($i = 1; $i <= $config; $i++) {?>
                 <?php
-$fn_in = fopen("../../main/process/91d9a2124569c9135979c12e3ec464f5/input/$read/$i.in", "r");
+$fn_in = fopen("../../main/process/91d9a2124569c9135979c12e3ec464f5/input/$read/$i.in", "r") or die("File not found");
     ?>
-                <?php $fn_out = fopen("../../main/process/91d9a2124569c9135979c12e3ec464f5/ans/$read/$i.sol", "r");?>
+                <?php $fn_out = fopen("../../main/process/91d9a2124569c9135979c12e3ec464f5/ans/$read/$i.sol", "r") or die("File not found");?>
                 <tr>
                     <td><?php
 

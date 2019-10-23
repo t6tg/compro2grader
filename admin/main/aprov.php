@@ -53,6 +53,7 @@ $row_serve = mysqli_fetch_array($result_serve);
             <li><a href="score.php">Score</a></li>
             <li><a href="special.php">S.Score</a></li>
             <li><a href="user.php">USER</a></li>
+            <li><a href="create.php">Create Problem</a></li>
             <li style="float:right"><a href="../../logout.php">Logout</a></li>
         </ul>
     </body>
@@ -147,6 +148,7 @@ if ($_GET['username']) {
 if ($_POST['quiz']) {
     $serve_sql = "update student set server='" . $_POST['server'] . "' where class='" . $i . "'";
     if ($conn->query($serve_sql) === true) {
+        echo '<script>alert("update Successful")</script>';
         header("Location:aprov.php");
     }
 }
