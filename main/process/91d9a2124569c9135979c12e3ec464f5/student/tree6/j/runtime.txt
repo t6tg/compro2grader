@@ -1,1 +1,0 @@
-sh: ./91d9a2124569c9135979c12e3ec464f5/student/tree6/j/: is a directory

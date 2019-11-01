@@ -51,7 +51,7 @@ if ($type == "img") {?>
                         src="../../main/process/91d9a2124569c9135979c12e3ec464f5/student/<?php echo $_GET['week']; ?>/<?php echo $_GET['file']; ?>">
                     <?php } else {?>
                     <textarea name="" id="" cols="100" rows="20" disabled> <?php
-$fn_in = fopen("../../main/process/91d9a2124569c9135979c12e3ec464f5/student/" . $_GET['week'] . "/" . $_GET['file'] . "/Main.java", "r");
+$fn_in = fopen("../../main/process/91d9a2124569c9135979c12e3ec464f5/student/" . $_GET['week'] . "/" . $_GET['file'] . "/Main.c", "r");
     while (!feof($fn_in)) {
         $result_in = fgets($fn_in);
         echo $result_in;

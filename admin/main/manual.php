@@ -59,7 +59,7 @@ $query_manual = mysqli_query($conn, $sql_manual);
                 <tr>
                     <td><?php echo $row_manual['username']; ?></td>
                     <?php echo $parts = explode('.', $row_manual['file']); ?>
-                    <?php if ($parts[1] == "java") {?>
+                    <?php if ($parts[1] == "c" || $parts[1] == ".C") {?>
                     <td><a target="_blank"
                             href="show.php?week=<?php echo $row_manual['week']; ?>&file=<?php echo $row_manual['username']; ?>&type=java">
                             <img src="../../img/java.png" width="100px">
@@ -106,7 +106,7 @@ if ($_GET['username']) {
         if ($_GET['pass'] == 1) {
             $sql_check = "update student set $week='" . $score . "' where username='" . $username . "'";
             if ($conn->query($sql_check) === true) {
-                $sql_delete = "delete from manual where file='" . $_GET['file'] . "'";
+                $sql_delete = "delete from manual where file='" . $_GET['file'] . "' and  username='$username'";
                 if ($conn->query($sql_delete) === true) {
                     header("Location:manual.php");
                 }
@@ -114,7 +114,7 @@ if ($_GET['username']) {
         } else {
             $sql_check = "update student set $week='0.0' where username='" . $username . "'";
             if ($conn->query($sql_check) === true) {
-                $sql_delete = "delete from manual where file='" . $_GET['file'] . "'";
+                $sql_delete = "delete from manual where file='" . $_GET['file'] . "' and username='$username'";
                 if ($conn->query($sql_delete) === true) {
                     header("Location:manual.php");
                 }

@@ -28,6 +28,12 @@ $query_work = mysqli_query($conn, $sql_work);
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+        #del-in {
+            display: none
+        }
+
+        </style>
     </head>
 
     <body>
@@ -96,11 +102,10 @@ $query_work = mysqli_query($conn, $sql_work);
                                 <?php }?>
                             </td>
                             <td>
-                            <form action="./update.php" id="signup-form" method="post">
+                                <form action="./update.php" id="submit-form" method="post" onsubmit="return confirm('Are you want to delete in field?');" >
                                     <input type="hidden" name="id" value="<?php echo $row_work['week']; ?>">
-                                    <button type="button" name="sub" 
-                                    onclick="delete_pro('<?php echo $row_work['week']; ?>')"
-                                    class="btn btn-danger"  >DELETE</button>
+                                    <input type="submit" name="submit"
+                                        class="btn btn-danger" value="DELETE" >
                                 </form>
                             </td>
                         </tr>
@@ -109,22 +114,11 @@ $query_work = mysqli_query($conn, $sql_work);
                 </div>
             </center>
         </div>
-        <script>
-        function delete_pro(value) {
-            if (confirm("You want to delete " + value + ".... ??")) {
-                document.getElementById("signup-form").submit();
-                return true;
-            } else {
-                return false;
-            }
-        }
-        </script>
     </body>
     <?php
 if ($_GET['week']) {
     $sql_update = "update problem set status='" . $_GET['status'] . "' where week='" . $_GET['week'] . "'";
-    if ($conn->query($sql_update) === true) {
-        echo "<script> location.replace('index.php'); </script>";
+    if ($conn->query($sql_update) === true) {echo "<script> location.replace('index.php'); </script>";
     }
 }
 if ($_GET['weektype']) {

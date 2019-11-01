@@ -12,12 +12,13 @@ if ($_SESSION['status'] != "admin") {
     header("Refresh:0 , url=../../logout.php");
     exit();
 }
-$sql = "select * from server where id=1";
+$username = $_SESSION['username'];
+$sql = "select * from administrator where username='$username'";
 $query = mysqli_query($conn, $sql);
 $result = mysqli_fetch_array($query);
 $i = $result['class'];
 if ($_POST['submit_class']) {
-    $class_sql = "update server set class='" . $_POST['class'] . "' where id=1";
+    $class_sql = "update administrator set class='" . $_POST['class'] . "' where username='$username'";
     if ($conn->query($class_sql) === true) {
         echo "<script>alert('Update class sucessful')</script>";
         header("Refresh:0");
@@ -149,7 +150,7 @@ if ($_POST['quiz']) {
     $serve_sql = "update student set server='" . $_POST['server'] . "' where class='" . $i . "'";
     if ($conn->query($serve_sql) === true) {
         echo '<script>alert("update Successful")</script>';
-        header("Location:aprov.php");
+        echo '<script>location.href="aprov.php"</script>';
     }
 }
 if ($_POST['ban']) {

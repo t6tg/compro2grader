@@ -51,7 +51,7 @@ if ($_GET['read']) {
     <center>
         <div class="container">
             <h2>File</h2>
-            <table style="max-width:100%">
+            <table class="table" style="max-width:100%">
                 <tr>
                     <th>Input</th>
                     <th>Output</th>

@@ -16,6 +16,7 @@ if ($_SESSION['status'] != "admin") {
 $sql_work = "select * from problem";
 $query_work = mysqli_query($conn, $sql_work);
 $v = $_POST['id'];
+echo $v;
 $sql_delete_pro = "DELETE FROM problem WHERE week='$v'";
 $conn->query($sql_delete_pro);
 $delete_student = "ALTER TABLE `student` DROP `$v`;";

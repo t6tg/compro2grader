@@ -66,13 +66,21 @@ if ($_SESSION['status'] != "admin") {
                     </div>
                     <center><button type="submit" name="submit" class="btn btn-primary">Submit</button></center>
                 </div>
-                <!-- ALTER TABLE `student` ADD `james` VARCHAR(100) NULL DEFAULT NULL AFTER `quiz_t2_n3`; -->
             </form>
             <br>
             <hr>
             <form action="">
-                <b> Problem Name :</b> <input type="search" name="search" id="">
-                <input type="submit" value="submit" name="submit_search">
+                <b> Problem Name :</b>
+                <div class="form-group">
+                  <label for=""></label>
+                  <select class="form-control" name="search" id="">
+                  <option selected disabled>---- Please Select ----</option>
+                  <?php $result_sh2 = $conn->query("SELECT * FROM problem"); while($row_sh2 = mysqli_fetch_assoc($result_sh2)){ ?>
+                    <option value="<?php echo $row_sh2['week']; ?>"><?php echo $row_sh2['week']; ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+                <input type="submit" value="submit" name="submit_search"><br><br>
             </form>
             <?php if (isset($_GET['submit_search'])) {?>
             <?php $sh = $_GET['search'];?>

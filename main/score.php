@@ -58,29 +58,25 @@ if ($row_ban['ban'] == 0 && $row_server['ban'] == 1) {
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <style>
+<head>
+    <style>
         table {
             display: block;
             height: 100%;
             overflow-x: scroll;
         }
-
-        </style>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Student</title>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
-        <!-- Theme style -->
-        <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-        <link rel="stylesheet" href="../src/style/index.css">
-        <style>
+    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Student</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+    <script defer src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script defer src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script defer src="dist/js/adminlte.min.js"></script>
+    <style>
         table {
             display: block;
             overflow: auto;
@@ -101,283 +97,173 @@ if ($row_ban['ban'] == 0 && $row_server['ban'] == 1) {
         th {
             text-align: left;
         }
+    </style>
 
-        </style>
+</head>
 
-    </head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
 
-    <body class="hold-transition skin-blue sidebar-mini">
-        <div class="wrapper">
+        <!-- Main Header -->
+        <header class="main-header">
 
-            <!-- Main Header -->
-            <header class="main-header">
+            <!-- Logo -->
+            <a href="#" class="logo" style="background-color : #ff6600">
+                <span class="logo-lg" style="background-color : #ff6600"><b>C </b>Grader</span>
+            </a>
 
-                <!-- Logo -->
-                <a href="#" class="logo" style="background-color : #ff6600">
-                    <span class="logo-lg" style="background-color : #ff6600"><b>C++</b>Grader</span>
-                </a>
-
-                <!-- Header Navbar -->
-                <nav class="navbar navbar-static-top" style="background-color : #ff6600" role="navigation">
-                    <!-- Navbar Right Menu -->
-                    <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">
-                            </li>
-                            <!-- Tasks Menu -->
+            <nav class="navbar navbar-static-top" style="background-color : #ff6600" role="navigation">
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account Menu -->
+                        <li class="dropdown user user-menu">
+                            <!-- Menu Toggle Button -->
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <!-- The user image in the navbar-->
+                                <img src="./dist/img/avatar5.png" class="user-image" alt="User Image">
+                                <span class="hidden-xs"><?php echo $_SESSION['name']; ?></span>
+                            </a>
                             <ul class="dropdown-menu">
-                                <li class="header">You have 9 tasks</li>
-                                <li>
-                                    <!-- Inner menu: contains the tasks -->
-                                    <ul class="menu">
-                                        <li>
-                                            <!-- Task item -->
-                                            <a href="#">
-                                                <h3>
-                                                    Design some buttons
-                                                    <small class="pull-right">20%</small>
-                                                </h3>
-                                                <div class="progress xs">
-                                                    <div class="progress-bar progress-bar-aqua" style="width: 20%"
-                                                        role="progressbar" aria-valuenow="20" aria-valuemin="0"
-                                                        aria-valuemax="100">
-                                                        <span class="sr-only">20% Complete</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <!-- end task item -->
-                                    </ul>
+                                <!-- The user image in the menu -->
+                                <li class="user-header" style="background-color: #ff6600;">
+                                    <img src="./dist/img/avatar5.png" class="img-circle" alt="User Image">
+                                    <p>
+                                        <?php echo $_SESSION['name'], "<br>STUDENT"; ?>
+                                    </p>
                                 </li>
-                                <li class="footer">
-                                    <a href="#">View all tasks</a>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="./profile.php" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="./score.php" class="btn btn-default btn-flat">Score</a>
+                                    </div><br><br>
+                                    <div class="pull-right">
+                                        <a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
                                 </li>
                             </ul>
-                            </li>
-                            <!-- User Account Menu -->
-                            <li class="dropdown user user-menu">
-                                <!-- Menu Toggle Button -->
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <!-- The user image in the navbar-->
-                                    <img src="./dist/img/avatar5.png" class="user-image" alt="User Image">
-                                    <span class="hidden-xs"><?php echo $_SESSION['name']; ?></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <!-- The user image in the menu -->
-                                    <li class="user-header" style="background-color: #ff6600;">
-                                        <img src="./dist/img/avatar5.png" class="img-circle" alt="User Image">
-                                        <p>
-                                            <?php echo $_SESSION['name'], "<br>STUDENT"; ?>
-                                        </p>
-                                    </li>
-                                    <!-- Menu Footer-->
-                                    <li class="user-footer">
-                                        <div class="pull-left">
-                                            <a href="./profile.php" class="btn btn-default btn-flat">Profile</a>
-                                        </div>
-                                        <div class="pull-right">
-                                            <a href="./score.php" class="btn btn-default btn-flat">Score</a>
-                                        </div><br><br>
-                                        <div class="pull-right">
-                                            <a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </header>
-            <!-- Left side column. contains the logo and sidebar -->
-            <aside class="main-sidebar">
-
-                <!-- sidebar: style can be found in sidebar.less -->
-                <section class="sidebar">
-
-                    <!-- Sidebar user panel (optional) -->
-                    <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="./dist/img/avatar5.png" class="img-circle" alt="User Image">
-                        </div>
-                        <div class="pull-left info">
-                            <p><?php echo $_SESSION['name']; ?></p>
-                            <!-- Status -->
-                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                        </div>
-                    </div>
-
-                    <!-- Sidebar Menu -->
-                    <ul class="sidebar-menu" data-widget="tree">
-                        <li class="header">Quastion</li>
-                        <!-- Optionally, you can add icons to the links -->
-                        <?php while ($row = mysqli_fetch_array($result)) {?>
-                        <li class="active"><a><span><a class="menu-icon fa fa-book "
-                                        href="index.php?week=<?php echo $week = $row['week']; ?>"><?php echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>" . $week = $row['week'] . "</b>"; ?></a></span></a>
                         </li>
-                        <?php }?>
-
                     </ul>
-                    <ul class="sidebar-menu" data-widget="tree">
-                        <li class="header">PDF</li>
-                        <?php
-while ($row_file = mysqli_fetch_array($result_file)) {?>
-                        <?php
-$file = $row_file['filename'];
-    ?>
-                        <li class="active"><a><span><a class="menu-icon fa fa-file-pdf-o "
-                                        href="pdf.php?file=<?php echo $file; ?>"><?php echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>" . $file . "</b>"; ?></a></span></a>
-                        </li>
-                        <?php }?>
-                    </ul>
-                    <!-- /.sidebar-menu -->
-                </section>
-                <!-- /.sidebar -->
-            </aside>
-
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-
-                    <div class="overflow-x:20px;">
-                        <table>
-                            <tr>
-                                <th>Work</th>
-                                <?php $i = 0;?>
-                                <?php while ($row_week = mysqli_fetch_array($result_score_x)) {?>
-                                <th><?php echo $score[$i] = $row_week['week']; ?></th>
-                                <?php $i++;?>
-                                <?php }?>
-                            </tr>
-                            <tr>
-                                <th>Score</th>
-                                <?php for ($j = 0; $j < count($score); $j++) {?>
-                                <td><?php if ($row_student["$score[$j]"] == "upload") {echo "0.0";} else if ($row_student["$score[$j]"] == "") {echo "0";} else {echo $row_student["$score[$j]"];}?>
-                                </td>
-                                <?php }?>
-                            </tr>
-                        </table><br>
-                        <?php $sum = 0;?>
-                        <?php for ($j = 0; $j < count($score); $j++) {
-    if ($row_student["$score[$j]"] == "upload") {
-        $row_student["$score[$j]"] = 0;
-    }
-    $sum += $row_student["$score[$j]"];
-}?>
-                        <b>คะแนนรวม : &ensp;</b><?php echo $sum; ?> &ensp; <b>คะแนน</b>
-                    </div>
-                </section>
-
-                <!-- Main content -->
-                <section class="content container-fluid">
-
-                </section>
-                <!-- /.content -->
-            </div>
-            <!-- /.content-wrapper -->
-
-            <!-- Main Footer -->
-            <footer class="main-footer">
-                <!-- To the right -->
-                <div class="pull-right hidden-xs">
-                    CIS : King mongkut's university of technology north bangkok
                 </div>
-                <!-- Default to the left -->
-                <strong>Copyright &copy; <?php echo Date('Y'); ?><a href="https://fb.com/mjamesthanawat"> Thanawat
-                        Gulati</a>.</strong> All rights reserved.
-            </footer>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
 
-            <!-- Control Sidebar -->
-            <aside class="control-sidebar control-sidebar-dark">
-                <!-- Create the tabs -->
-                <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-                    <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i
-                                class="fa fa-home"></i></a></li>
-                    <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="./dist/img/avatar5.png" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p><?php echo $_SESSION['name']; ?></p>
+                        <!-- Status -->
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="header">Question</li>
+                    <?php while ($row = mysqli_fetch_array($result)) { ?>
+                        <?php if ($row['week'] == $_GET['week']) { ?>
+                            <li class="active">
+                                <a href="index.php?week=<?php echo $week = $row['week']; ?>">
+                                    <i class="menu-icon fa fa-server"></i>
+                                    <?php echo "&nbsp;&nbsp;&nbsp;<b>" . $week = $row['week'] . "</b>"; ?></a>
+                            </li>
+                        <?php } else { ?>
+                            <li>
+                                <a href="index.php?week=<?php echo $week = $row['week']; ?>">
+                                    <i class="menu-icon fa fa-server"></i>
+                                    <?php echo "&nbsp;&nbsp;&nbsp;<b>" . $week = $row['week'] . "</b>"; ?></a>
+                            </li>
+                        <?php } ?>
+                    <?php } ?>
+
                 </ul>
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <!-- Home tab content -->
-                    <div class="tab-pane active" id="control-sidebar-home-tab">
-                        <h3 class="control-sidebar-heading">Recent Activity</h3>
-                        <ul class="control-sidebar-menu">
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="header">PDF OR FILE</li>
+                    <?php while ($row_file = mysqli_fetch_array($result_file)) { ?>
+                        <li>
+                            <?php $file = $row_file['filename']; ?>
+                            <a href="pdf.php?file=<?php echo $file; ?>">
+                                <i class="menu-icon fa fa-file "></i>
+                                <?php echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>" . $file . "</b>"; ?></a>
+                        </li>
+                    <?php } ?>
+                </ul>
+                <!-- /.sidebar-menu -->
+            </section>
+            <!-- /.sidebar -->
+        </aside>
 
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
 
-                                        <p>Will be 23 on April 24th</p>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <!-- /.control-sidebar-menu -->
-
-                        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-                        <ul class="control-sidebar-menu">
-                            <li>
-                                <a href="javascript:;">
-                                    <h4 class="control-sidebar-subheading">
-                                        Custom Template Design
-                                        <span class="pull-right-container">
-                                            <span class="label label-danger pull-right">70%</span>
-                                        </span>
-                                    </h4>
-
-                                    <div class="progress progress-xxs">
-                                        <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <!-- /.control-sidebar-menu -->
-
-                    </div>
-                    <!-- /.tab-pane -->
-                    <!-- Stats tab content -->
-                    <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-                    <!-- /.tab-pane -->
-                    <!-- Settings tab content -->
-                    <div class="tab-pane" id="control-sidebar-settings-tab">
-                        <form method="post">
-                            <h3 class="control-sidebar-heading">General Settings</h3>
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Report panel usage
-                                    <input type="checkbox" class="pull-right" checked>
-                                </label>
-
-                                <p>
-                                    Some information about this general settings option
-                                </p>
-                            </div>
-                            <!-- /.form-group -->
-                        </form>
-                    </div>
-                    <!-- /.tab-pane -->
+                <div class="overflow-x:20px;">
+                    <table>
+                        <tr>
+                            <th>Work</th>
+                            <?php $i = 0; ?>
+                            <?php while ($row_week = mysqli_fetch_array($result_score_x)) { ?>
+                                <th><?php echo $score[$i] = $row_week['week']; ?></th>
+                                <?php $i++; ?>
+                            <?php } ?>
+                        </tr>
+                        <tr>
+                            <th>Score</th>
+                            <?php for ($j = 0; $j < count($score); $j++) { ?>
+                                <td><?php if ($row_student["$score[$j]"] == "upload") {
+                                            echo "0.0";
+                                        } else if ($row_student["$score[$j]"] == "") {
+                                            echo "0";
+                                        } else {
+                                            echo $row_student["$score[$j]"];
+                                        } ?>
+                                </td>
+                            <?php } ?>
+                        </tr>
+                    </table><br>
+                    <?php $sum = 0; ?>
+                    <?php for ($j = 0; $j < count($score); $j++) {
+                        if ($row_student["$score[$j]"] == "upload") {
+                            $row_student["$score[$j]"] = 0;
+                        }
+                        $sum += $row_student["$score[$j]"];
+                    } ?>
+                    <b>คะแนนรวม : &ensp;</b><?php echo $sum; ?> &ensp; <b>คะแนน</b>
                 </div>
-            </aside>
-            <!-- /.control-sidebar -->
-            <!-- Add the sidebar's background. This div must be placed
-  immediately after the control sidebar -->
-            <div class="control-sidebar-bg"></div>
+            </section>
+
+            <!-- Main content -->
+            <section class="content container-fluid">
+
+            </section>
+            <!-- /.content -->
         </div>
-        <!-- ./wrapper -->
+        <!-- /.content-wrapper -->
 
-        <!-- REQUIRED JS SCRIPTS -->
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <!-- To the right -->
+            <div class="pull-right hidden-xs">
+                CIS : King mongkut's university of technology north bangkok
+            </div>
+            <!-- Default to the left -->
+            <strong>Copyright &copy; <?php echo Date('Y'); ?><a href="https://fb.com/mjamesthanawat"> Thanawat
+                    Gulati</a>.</strong> All rights reserved.
+        </footer>
+        <div class="control-sidebar-bg"></div>
+    </div>
 
-        <!-- jQuery 3 -->
-        <script src="bower_components/jquery/dist/jquery.min.js"></script>
-        <!-- Bootstrap 3.3.7 -->
-        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="dist/js/adminlte.min.js"></script>
-
-        <!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
-    </body>
+</body>
 
 </html>

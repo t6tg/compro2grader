@@ -52,15 +52,15 @@ if ($row_server['server_st'] == 1) {
                 } else if ($result['type'] == 1) {
                     $user_id = $_SESSION['username'];
                     exec("mkdir ./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/");
-                    if ($type == ".cpp") {
-                        move_uploaded_file($_FILES['file']['tmp_name'], "91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/Main.cpp");
+                    if ($type == ".c" || $type == ".C") {
+                        move_uploaded_file($_FILES['file']['tmp_name'], "91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/Main.c");
                         $search = 'package';
                         $check = false;
                         $score_user = 0;
-                        $CC = "g++ -w -std=c++2a";
+                        $CC = "gcc";
                         $out = "./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/ g++ ./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/main";
-                        // $out="CLASSPATH=91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id g++ Main.cpp";
-                        $filename_code = "./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/Main.cpp -o ./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/main";
+                        // $out="CLASSPATH=91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id g++ Main.c";
+                        $filename_code = "./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/Main.c -o ./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/main";
                         $arr_Score = [];
                         $arr_P = [];
                         $arr_time = [];
@@ -90,6 +90,7 @@ if ($row_server['server_st'] == 1) {
                                     shell_exec($runtime_error_command);
                                     $runtime_error = file_get_contents($runtime_file);
                                     $out = "timeout 1 ./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/main < " . $filename_in . " > ./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/$i.sol";
+                                    // $out = "./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/main < " . $filename_in . " > ./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/$i.sol";
                                     $output = shell_exec($out);
                                     // $output = file_get_contents("output.txt");
                                 }
@@ -143,7 +144,7 @@ if ($row_server['server_st'] == 1) {
                         exec("rm ./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/$executable");
                         exec("rm ./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/runtime.txt");
                         exec("rm ./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/main");
-                        exec("rm ./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/*.sol");
+                        // exec("rm ./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/*.sol");
                         // exec("rm ./91d9a2124569c9135979c12e3ec464f5/student/$week/$user_id/error.txt");
                         header("Refresh:0;url=../index.php?week=$week");
                     } else {
@@ -152,10 +153,10 @@ alert('นามสกุลของไฟล์ไม่ถูกต้อง'
 </script>";
                         header("Refresh:0;url=../index.php?week=$week");
                     }} else if ($result['type'] == 2) {
-                    if ($type == ".cpp") {
-                        $file_sql = "insert into manual(week,username,file) values('" . $week . "' , '" . $student . "' , '" . "91d9a2124569c9135979c12e3ec464f5/student/$week/$sfile.cpp" . "')";
+                    if ($type == ".c") {
+                        $file_sql = "insert into manual(week,username,file) values('" . $week . "' , '" . $student . "' , '" . "91d9a2124569c9135979c12e3ec464f5/student/$week/$sfile.c" . "')";
                         if ($conn->query($file_sql) === true) {
-                            move_uploaded_file($_FILES['file']['tmp_name'], "91d9a2124569c9135979c12e3ec464f5/student/$week/$student/Main.cpp");
+                            move_uploaded_file($_FILES['file']['tmp_name'], "91d9a2124569c9135979c12e3ec464f5/student/$week/$student/Main.c");
                             header("Refresh:0;url=../index.php?week=$week");
                             $add_sql = "update student set $week='upload
 ' where username='$student'";

@@ -25,7 +25,7 @@ date_default_timezone_set('asia/bangkok');
                     <img src="../img/logo.png" alt="logo" width="200">
                     <p></p>
                     <b>
-                        <p>ADMIN <br> ( C++ )</p>
+                        <p>ADMIN <br> ( C )</p>
                     </b><br>
                     <form action="checklogin_admin.php" name="myform" onsubmit="return validateForm()" method="post">
                         <input class="login" type="text" name="sid" placeholder="username">
